@@ -2,7 +2,8 @@
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-var cam_video_id = "camsource"
+var cam_video_id = "camsource";
+var localstream = "";
 
 window.addEventListener('DOMContentLoaded', function() {
     // Assign the <video> element to a variable
@@ -15,6 +16,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (navigator.getUserMedia) {
         navigator.getUserMedia(options, function(stream) {
             video.srcObject=stream;
+            localstream=stream;
         }, function(error) {
             console.log(error)
         });
@@ -29,5 +31,6 @@ window.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function() {
     if (!navigator.getUserMedia) return;
     cam = camera(cam_video_id);
-    cam.start()
+    cam.start();
+    
 })
