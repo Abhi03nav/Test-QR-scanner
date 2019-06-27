@@ -1,3 +1,4 @@
+
 function read(a)
 {
     $("#qr-value").text(a);
